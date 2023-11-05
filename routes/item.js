@@ -25,11 +25,11 @@ route.get("/", async(req,res)=>{
 
 
 // User to find item by id
-route.get("/item/:id", async (req,res)=>{
+route.get("/:id", async (req,res)=>{
     const item = await itemCollection.findById({_id:req.params.id});
     res.status(200).json({
         message : "Seraching by id",
-        item:item
+        item
     })
 });
 
