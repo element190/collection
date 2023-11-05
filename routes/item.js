@@ -76,26 +76,26 @@ route.patch("/edit-items-by-id/:id",adminsOnly, async (req,res)=>{
 });
 
 // Admins Only to edit items by finding product id
-route.put("/edit-items-by-id/:id",adminsOnly, async (req,res)=>{
-    try{
-        const updatedTask = await itemCollection.findbyIdAndUpdate(req.params.id,{
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
-            isInStock: req.body.isInStock
-        }, {new: true});
+// route.put("/edit-items-by-id/:id",adminsOnly, async (req,res)=>{
+//     try{
+//         const updatedTask = await itemCollection.findbyIdAndUpdate(req.params.id,{
+//             name: req.body.name,
+//             description: req.body.description,
+//             price: req.body.price,
+//             isInStock: req.body.isInStock
+//         }, {new: true});
     
-        if(!updatedTask) return res.status(404).send("Not found");
+//         if(!updatedTask) return res.status(404).send("Not found");
     
-        res.status(200).send({
-            message: "Task Updated Successfully",
-            updatedTask
-        });
-    }catch (error){
-        console.log(error);
-        res.status(403).send("action-not-allowed");
-    }
-});
+//         res.status(200).send({
+//             message: "Task Updated Successfully",
+//             updatedTask
+//         });
+//     }catch (error){
+//         console.log(error);
+//         res.status(403).send("action-not-allowed");
+//     }
+// });
 
 
 route.delete("/:id",adminsOnly,async (req,res)=>{
