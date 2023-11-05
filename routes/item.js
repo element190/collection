@@ -26,7 +26,7 @@ route.get("/", async(req,res)=>{
 
 // User to find item by id
 route.get("/item/:id", async (req,res)=>{
-    const item = await itemCollection.findById(req.params.id);
+    const item = await itemCollection.findById({_id:req.params.id});
     res.status(200).json({
         message : "Seraching by id",
         item:item
@@ -57,7 +57,7 @@ route.post("/add-item",adminsOnly, async (req,res)=>{
 // Admins Only to updated items by description or by words
 route.patch("/edit-items-by-id/:id",adminsOnly, async (req,res)=>{
     try{
-        const itemEdit = await itemCollection.findByIdAndUpdate(req.params.id,{
+        const itemEdit = await itemCollection.findByIdAndUpdate({_id: req.params.id},{
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
