@@ -27,7 +27,7 @@ route.get("/", async(req,res)=>{
 // User to find item by id
 route.get("/:id", async (req,res)=>{
     const item = await itemCollection.findById({_id:req.params.id});
-    res.status(200).json({
+    res.status(200).send({
         message : "Seraching by id",
         item
     })
