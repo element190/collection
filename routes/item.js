@@ -100,7 +100,7 @@ route.patch("/edit-items-by-id/:id",adminsOnly, async (req,res)=>{
 
 route.delete("delete/:id",adminsOnly,async (req,res)=>{
     try{
-        const deletedTask = await itemCollection.findByIdAndDelete({id:req.params.id});
+        const deletedTask = await itemCollection.findByIdAndDelete({_id:req.params.id});
         if(!deletedTask) return res.status(400).send("Not Found");
         res.status(200).send("Task has been deleted successfully!");
     } catch (error) {
